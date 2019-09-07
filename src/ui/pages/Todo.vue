@@ -23,20 +23,23 @@ import TaskApi from "@/api/task-api";
 
 @Component
 export default class Todo extends Vue {
-  tasks: Task[] = [];
   title: string = "";
 
-  created() {
-    this.loadTaskList();
+  get tasks(): Task[] {
+    return this.$store.state.tasks;
   }
 
-  async loadTaskList() {
-    this.tasks = await this.$store.dispatch("getTaskList");
+  created() {
+    this.initTaskList();
+  }
+
+  async initTaskList() {
+    if (this.tasks.length) return;
+    await this.$store.dispatch("getTaskList");
   }
 
   async createTask() {
-    const t = await this.$store.dispatch("createTask", { title: this.title });
-    this.tasks.push(t);
+    await this.$store.dispatch("createTask", { title: this.title });
     this.title = "";
   }
 }
