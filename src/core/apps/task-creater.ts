@@ -1,4 +1,4 @@
-import { CreateTaskResponse, CreateTaskRequest } from "./create-task";
+import { CreateTaskResponse, CreateTaskRequest } from "./task";
 import Task from "../entities/task";
 import TaskRepository from "../repositories/task-repository";
 

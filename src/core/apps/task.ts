@@ -11,3 +11,11 @@ export interface CreateTaskResponse {
 export type CreateTaskRequester = (
   req: CreateTaskRequest
 ) => CreateTaskResponse;
+
+export interface ListTaskResponse {
+  tasks: Task[];
+}
+
+export interface ListTaskRequester {
+  exec(): Promise<ListTaskResponse>;
+}
