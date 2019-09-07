@@ -1,5 +1,5 @@
 export default class Task {
-  id: number = 0;
+  id?: number;
   title: string = "";
 
   public constructor(params: Partial<Task>) {
