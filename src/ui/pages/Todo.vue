@@ -2,7 +2,6 @@
   <div>
     <ol>
       <li v-for="t in tasks" :key="t.id">
-        {{ t.id }}
         {{ t.title }}
       </li>
     </ol>
@@ -20,7 +19,7 @@ import { Prop, Component, Vue } from "vue-property-decorator";
 import Task from "@/core/entities/task";
 import TaskCreater from "@/core/apps/task-creater";
 import TaskLoader from "@/core/apps/task-loader";
-import TaskApi from "@/api/taks-api";
+import TaskApi from "@/api/task-api";
 
 @Component
 export default class Todo extends Vue {
