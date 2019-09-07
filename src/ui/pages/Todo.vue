@@ -6,7 +6,7 @@
       </li>
     </ol>
     <form @submit.prevent="createTask">
-      <input type="text" v-model="title" />
+      <input type="text" v-model="title" required />
       <button>
         + Add Task
       </button>
