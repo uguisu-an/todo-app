@@ -1,8 +1,6 @@
-import Axios from "axios";
+import { AxiosInstance } from "axios";
 import Task from "@/core/entities/task";
 import TaskRepository from "@/core/repositories/task-repository";
-
-const client = Axios.create({ baseURL: "http://localhost:3000" });
 
 function parseTask(t: any) {
   return {
@@ -12,13 +10,10 @@ function parseTask(t: any) {
 }
 
 export default class TaskApi implements TaskRepository {
-  // public async get(id: number): Promise<Task> {
-  //   const res = await client.get(`/tasks/${id}`);
-  //   return parseTask(res.data);
-  // }
+  public constructor(private client: AxiosInstance) {}
 
   public async getAll(): Promise<Task[]> {
-    const res = await client.get("/tasks");
+    const res = await this.client.get("/tasks");
     return res.data.map(parseTask);
   }
 
@@ -27,12 +22,12 @@ export default class TaskApi implements TaskRepository {
   }
 
   private async create(task: Task): Promise<Task> {
-    const res = await client.post("/tasks", task);
+    const res = await this.client.post("/tasks", task);
     return parseTask(res.data);
   }
 
   private async update(task: Task): Promise<Task> {
-    const res = await client.put(`/tasks/${task.id}`, task);
+    const res = await this.client.put(`/tasks/${task.id}`, task);
     return parseTask(res.data);
   }
 }

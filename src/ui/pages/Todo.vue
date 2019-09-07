@@ -31,13 +31,13 @@ export default class Todo extends Vue {
   }
 
   async loadTaskList() {
-    const app = new TaskLoader(new TaskApi());
+    const app = new TaskLoader(this.$store.getters.taskApi);
     const res = await app.exec();
     this.tasks = res.tasks;
   }
 
   async createTask() {
-    const svc = new TaskCreater(new TaskApi());
+    const svc = new TaskCreater(this.$store.getters.taskApi);
     const res = await svc.exec({ title: this.title });
     this.tasks.push(res.task);
     this.title = "";
