@@ -9,6 +9,9 @@ function parseTask(t: any) {
   };
 }
 
+/**
+ * APIにアクセスしてTaskをやり取りする
+ */
 export default class TaskApi implements TaskRepository {
   public constructor(private client: AxiosInstance) {}
 

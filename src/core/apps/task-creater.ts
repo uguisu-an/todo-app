@@ -3,6 +3,9 @@ import Task from "../entities/task";
 import TaskRepository from "../repositories/task-repository";
 import { CreateTaskRequester } from "./task";
 
+/**
+ * Taskを作成する
+ */
 export default class TaskCreater implements CreateTaskRequester {
   public constructor(private repository: TaskRepository) {}
 
