@@ -37,7 +37,6 @@ export default class Todo extends Vue {
   async createTask() {
     const t = await this.$store.dispatch("createTask", { title: this.title });
     this.tasks.push(t);
-    this.tasks.push(res.task);
     this.title = "";
   }
 }
