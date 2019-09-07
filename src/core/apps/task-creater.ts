@@ -1,8 +1,9 @@
 import { CreateTaskResponse, CreateTaskRequest } from "./task";
 import Task from "../entities/task";
 import TaskRepository from "../repositories/task-repository";
+import { CreateTaskRequester } from "./task";
 
-export default class TaskCreater {
+export default class TaskCreater implements CreateTaskRequester {
   public constructor(repository: TaskRepository) {
     this.repository = repository;
   }

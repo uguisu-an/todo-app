@@ -16,6 +16,7 @@ export default class TaskApi implements TaskRepository {
   //   const res = await client.get(`/tasks/${id}`);
   //   return parseTask(res.data);
   // }
+
   public async getAll(): Promise<Task[]> {
     const res = await client.get("/tasks");
     return res.data.map(parseTask);
