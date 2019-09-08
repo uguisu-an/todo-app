@@ -1,6 +1,6 @@
 import { AxiosInstance } from "axios";
 import Task from "@/core/entities/task";
-import TaskRepository from "@/core/repositories/task-repository";
+import TaskGateway from "@/core/gateways/task-gateway";
 
 function parseTask(t: any) {
   return {
@@ -12,7 +12,7 @@ function parseTask(t: any) {
 /**
  * APIにアクセスしてTaskをやり取りする
  */
-export default class TaskApi implements TaskRepository {
+export default class TaskApi implements TaskGateway {
   public constructor(private client: AxiosInstance) {}
 
   public async getAll(): Promise<Task[]> {
@@ -20,16 +20,12 @@ export default class TaskApi implements TaskRepository {
     return res.data.map(parseTask);
   }
 
-  public async save(task: Task): Promise<Task> {
-    return task.id ? this.update(task) : this.create(task);
-  }
-
-  private async create(task: Task): Promise<Task> {
+  public async create(task: Task): Promise<Task> {
     const res = await this.client.post("/tasks", task);
     return parseTask(res.data);
   }
 
-  private async update(task: Task): Promise<Task> {
+  public async update(task: Task): Promise<Task> {
     const res = await this.client.put(`/tasks/${task.id}`, task);
     return parseTask(res.data);
   }

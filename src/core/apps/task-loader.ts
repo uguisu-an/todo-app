@@ -1,15 +1,15 @@
 import { ListTaskRequester, ListTaskResponse } from "./task";
-import TaskRepository from "../repositories/task-repository";
+import TaskGateway from "../gateways/task-gateway";
 
 /**
  * Taskを読み込む
  */
 export default class TaskLoader implements ListTaskRequester {
-  public constructor(private respository: TaskRepository) {}
+  public constructor(private gateway: TaskGateway) {}
 
   public async exec(): Promise<ListTaskResponse> {
     return {
-      tasks: await this.respository.getAll()
+      tasks: await this.gateway.getAll()
     };
   }
 }
