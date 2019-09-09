@@ -51,6 +51,7 @@ export default class Todo extends Vue {
     const handler = new TaskCreater(taskRepository);
     const res = await handler.handle(this.createTaskRequest);
     this.tasks.push(res);
+    this.createTaskRequest = { title: "" };
   }
 }
 </script>
