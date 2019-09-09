@@ -16,7 +16,7 @@
 
 <script lang="ts">
 import { Prop, Component, Vue } from "vue-property-decorator";
-import Task from "@/core/entities/task";
+import Task from "@/core/models/task";
 
 @Component
 export default class Todo extends Vue {

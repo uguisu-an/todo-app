@@ -1,4 +1,4 @@
-import Task from "../entities/task";
+import Task from "../models/task";
 
 /**
  * TaskのAPIとやり取りする

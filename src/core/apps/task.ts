@@ -1,4 +1,4 @@
-import Task from "../entities/task";
+import Task from "../models/task";
 
 export interface CreateTaskRequest {
   title: string;

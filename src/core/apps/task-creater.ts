@@ -1,5 +1,5 @@
 import { CreateTaskResponse, CreateTaskRequest } from "./task";
-import Task from "../entities/task";
+import Task from "../models/task";
 import { CreateTaskRequester } from "./task";
 import TaskGateway from "../gateways/task-gateway";
 

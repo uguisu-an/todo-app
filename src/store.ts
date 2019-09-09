@@ -4,7 +4,7 @@ import Axios from "axios";
 import TaskApi from "@/api/task-api";
 import TaskLoader from "@/core/apps/task-loader";
 import TaskCreater from "@/core/apps/task-creater";
-import Task from "@/core/entities/task";
+import Task from "@/core/models/task";
 
 Vue.use(Vuex);
 
