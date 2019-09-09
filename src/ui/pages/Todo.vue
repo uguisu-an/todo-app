@@ -6,7 +6,7 @@
       </li>
     </ol>
     <form @submit.prevent="createTask">
-      <input type="text" v-model="title" required />
+      <input type="text" v-model="createTaskRequest.title" required />
       <button>
         + Add Task
       </button>
@@ -16,28 +16,41 @@
 
 <script lang="ts">
 import { Prop, Component, Vue } from "vue-property-decorator";
-import Task from "@/core/models/task";
+import Axios from "axios";
+import { CreateTaskRequest } from "@/core/usecases/create-task";
+import TaskCreater from "@/core/interactors/task-creator";
+import TaskSearcher from "@/core/interactors/task-searcher";
+import TaskRepository from "@/core/repositories/task-repository";
+import TaskApi from "@/api/task-api";
+
+const client = Axios.create({ baseURL: "http://localhost:3000" });
+const taskApi = new TaskApi(client);
+const taskRepository = new TaskRepository(taskApi);
+
+interface Task {
+  id: number;
+  title: string;
+}
 
 @Component
 export default class Todo extends Vue {
-  title: string = "";
-
-  get tasks(): Task[] {
-    return this.$store.state.tasks;
-  }
+  tasks: Task[] = [];
+  createTaskRequest: CreateTaskRequest = { title: "" };
 
   created() {
     this.initTaskList();
   }
 
   async initTaskList() {
-    if (this.tasks.length) return;
-    await this.$store.dispatch("getTaskList");
+    const handler = new TaskSearcher(taskRepository);
+    const res = await handler.handle({});
+    this.tasks = res.tasks;
   }
 
   async createTask() {
-    await this.$store.dispatch("createTask", { title: this.title });
-    this.title = "";
+    const handler = new TaskCreater(taskRepository);
+    const res = await handler.handle(this.createTaskRequest);
+    this.tasks.push(res);
   }
 }
 </script>
