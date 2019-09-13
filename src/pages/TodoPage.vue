@@ -15,6 +15,7 @@ import TaskListPresenter from "@/presenters/task-list-presenter";
 import Task from "@/usecases/models/task";
 
 import Todo from "@/views/Todo.vue";
+import CreateTaskInteractor from "../usecases/create-task";
 
 const client = Axios.create({ baseURL: "http://localhost:3000" });
 const taskApi = new TaskApi(client);
@@ -33,8 +34,9 @@ export default class TodoPage extends Vue {
   }
 
   async createTask(task: NewTask) {
-    const res = await new TaskCreater(taskRepository).handle(task);
-    this.tasks.push(res);
+    const c: CreateTaskInteractor = new TaskCreater(taskRepository);
+    const t = await c.handle(task);
+    this.tasks.push(t);
     this.newTask = new NewTask();
   }
 
@@ -45,8 +47,8 @@ export default class TodoPage extends Vue {
   private tasks: Task[] = [];
 
   private async initTaskList() {
-    const res = await new TaskSearcher(taskRepository).handle({});
-    this.tasks = res.tasks;
+    const q = new TaskSearcher(taskRepository);
+    this.tasks = await q.handle();
   }
 }
 </script>
