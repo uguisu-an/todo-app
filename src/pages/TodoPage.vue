@@ -16,6 +16,7 @@ import Task from "@/usecases/models/task";
 
 import Todo from "@/views/Todo.vue";
 import CreateTaskInteractor from "../usecases/create-task";
+import ListTaskInteractor from "../usecases/list-task";
 
 const client = Axios.create({ baseURL: "http://localhost:3000" });
 const taskApi = new TaskApi(client);
@@ -47,7 +48,7 @@ export default class TodoPage extends Vue {
   private tasks: Task[] = [];
 
   private async initTaskList() {
-    const q = new TaskSearcher(taskRepository);
+    const q: ListTaskInteractor = new TaskSearcher(taskRepository);
     this.tasks = await q.handle();
   }
 }

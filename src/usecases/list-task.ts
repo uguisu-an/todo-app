@@ -1,5 +1,5 @@
 import Task from "./models/task";
 
-export interface ListTaskInteractor {
+export default interface ListTaskInteractor {
   handle(): Promise<Task[]>;
 }

@@ -1,4 +1,4 @@
-import { ListTaskInteractor } from "@/usecases/list-task";
+import ListTaskInteractor from "@/usecases/list-task";
 import TaskRepository from "@/entities/repositories/task-repository";
 import Task from "../models/task";
 import TaskEntity from "@/entities/task";
