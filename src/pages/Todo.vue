@@ -14,7 +14,6 @@
 <script lang="ts">
 import { Prop, Component, Vue } from "vue-property-decorator";
 import Axios from "axios";
-import { CreateTaskRequest } from "@/usecases/create-task";
 import TaskCreater from "@/usecases/interactors/task-creator";
 import TaskSearcher from "@/usecases/interactors/task-searcher";
 import TaskRepository from "@/entities/repositories/task-repository";

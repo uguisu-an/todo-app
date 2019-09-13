@@ -1,13 +1,6 @@
-export interface CreateTaskInteractor {
-  handle(req: CreateTaskRequest): Promise<CreateTaskResponse>;
-}
+import Task from "./models/task";
+import CreateTaskRequest from "./models/create-task-request";
 
-export interface CreateTaskRequest {
-  title: string;
-}
-
-// EntityとResponseが同じうちはtype宣言でいい？
-export interface CreateTaskResponse {
-  id: number;
-  title: string;
+export default interface CreateTaskInteractor {
+  handle(req: CreateTaskRequest): Promise<Task>;
 }
