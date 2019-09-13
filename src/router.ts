@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Todo from "@/pages/Todo.vue";
+import TodoPage from "@/pages/TodoPage.vue";
 
 Vue.use(Router);
 
@@ -11,7 +11,7 @@ export default new Router({
     {
       path: "/",
       name: "home",
-      component: Todo
+      component: TodoPage
     }
   ]
 });
