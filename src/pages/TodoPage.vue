@@ -1,5 +1,8 @@
 <template>
-  <todo v-bind="{ newTask, taskList }" v-on="{ createTask }"></todo>
+  <todo
+    v-bind="{ newTask, taskList, projectList }"
+    v-on="{ createTask }"
+  ></todo>
 </template>
 
 <script lang="ts">
@@ -10,6 +13,7 @@ import TaskSearcher from "@/usecases/interactors/task-searcher";
 import TaskApi from "@/api/task-api";
 import NewTask from "@/models/new-task";
 import TaskListItem from "@/models/task-list-item";
+import ProjectListItem from "@/models/project-list-item";
 import TaskListPresenter from "@/presenters/task-list-presenter";
 import Task from "@/usecases/models/task";
 
@@ -31,6 +35,19 @@ export default class TodoPage extends Vue {
 
   get taskList(): TaskListItem[] {
     return TaskListPresenter(this.tasks);
+  }
+
+  get projectList(): ProjectListItem[] {
+    return [
+      {
+        key: "1",
+        name: "Chores"
+      },
+      {
+        key: "2",
+        name: "Errands"
+      }
+    ];
   }
 
   async createTask(task: NewTask) {
