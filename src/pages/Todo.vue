@@ -25,15 +25,11 @@ import VTaskList from "../components/VTaskList.vue";
 import VTaskListItem from "../components/VTaskListItem.vue";
 import TaskListItem from "@/models/task-list-item";
 import TaskListPresenter from "@/presenters/task-list-presenter";
+import Task from "@/usecases/models/task";
 
 const client = Axios.create({ baseURL: "http://localhost:3000" });
 const taskApi = new TaskApi(client);
 const taskRepository = new TaskRepository(taskApi);
-
-interface Task {
-  id: number;
-  title: string;
-}
 
 @Component({
   components: {
