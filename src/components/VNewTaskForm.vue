@@ -9,11 +9,11 @@
 
 <script lang="ts">
 import { Prop, Component, Vue } from "vue-property-decorator";
-import NewTaskForm from "@/models/new-task-form";
+import NewTask from "@/models/new-task";
 
 @Component
-export default class VNewTaskForm extends Vue {
-  @Prop({ default: () => new NewTaskForm() }) task!: NewTaskForm;
+export default class VNewTask extends Vue {
+  @Prop({ default: () => new NewTask() }) task!: NewTask;
 
   submit() {
     this.$emit("create", this.task);

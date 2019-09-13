@@ -5,7 +5,7 @@
         {{ t.title }}
       </li>
     </ol>
-    <v-new-task-form :req="req" @create="create"></v-new-task-form>
+    <v-new-task-form v-bind="{ task }" @create="create"></v-new-task-form>
   </div>
 </template>
 
@@ -18,6 +18,7 @@ import TaskSearcher from "@/usecases/interactors/task-searcher";
 import TaskRepository from "@/entities/repositories/task-repository";
 import TaskApi from "@/api/task-api";
 import VNewTaskForm from "@/components/VNewTaskForm.vue";
+import NewTask from "@/models/new-task";
 
 const client = Axios.create({ baseURL: "http://localhost:3000" });
 const taskApi = new TaskApi(client);
@@ -34,7 +35,7 @@ interface Task {
   }
 })
 export default class Todo extends Vue {
-  req: CreateTaskRequest = { title: "" };
+  task: NewTask = new NewTask();
   tasks: Task[] = [];
 
   created() {
@@ -46,10 +47,10 @@ export default class Todo extends Vue {
     this.tasks = res.tasks;
   }
 
-  async create(req: CreateTaskRequest) {
-    const res = await new TaskCreater(taskRepository).handle(req);
+  async create(task: NewTask) {
+    const res = await new TaskCreater(taskRepository).handle(task);
     this.tasks.push(res);
-    this.req = { title: "" };
+    this.task = new NewTask();
   }
 }
 </script>
