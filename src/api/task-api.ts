@@ -1,6 +1,6 @@
 import { AxiosInstance } from "axios";
-import Task from "@/core/models/task";
-import TaskGateway from "@/core/gateways/task-gateway";
+import Task from "@/entities/task";
+import TaskGateway from "@/usecases/gateways/task-gateway";
 
 function parseTask(t: any) {
   return {

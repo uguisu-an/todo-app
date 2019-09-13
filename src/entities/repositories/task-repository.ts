@@ -1,5 +1,5 @@
-import Task from "../models/task";
-import TaskGateway from "../gateways/task-gateway";
+import Task from "../task";
+import TaskGateway from "@/usecases/gateways/task-gateway";
 
 export default class TaskRepository {
   public constructor(private api: TaskGateway) {}

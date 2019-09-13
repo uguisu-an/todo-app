@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { Prop, Component, Vue } from "vue-property-decorator";
-import { CreateTaskRequest } from "../../core/usecases/create-task";
+import { CreateTaskRequest } from "@/usecases/create-task";
 
 @Component
 export default class CreateTaskForm extends Vue {

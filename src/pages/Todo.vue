@@ -12,12 +12,12 @@
 <script lang="ts">
 import { Prop, Component, Vue } from "vue-property-decorator";
 import Axios from "axios";
-import { CreateTaskRequest } from "@/core/usecases/create-task";
-import TaskCreater from "@/core/interactors/task-creator";
-import TaskSearcher from "@/core/interactors/task-searcher";
-import TaskRepository from "@/core/repositories/task-repository";
+import { CreateTaskRequest } from "@/usecases/create-task";
+import TaskCreater from "@/usecases/interactors/task-creator";
+import TaskSearcher from "@/usecases/interactors/task-searcher";
+import TaskRepository from "@/entities/repositories/task-repository";
 import TaskApi from "@/api/task-api";
-import CreateTaskForm from "../components/CreateTaskForm.vue";
+import CreateTaskForm from "@/components/CreateTaskForm.vue";
 
 const client = Axios.create({ baseURL: "http://localhost:3000" });
 const taskApi = new TaskApi(client);

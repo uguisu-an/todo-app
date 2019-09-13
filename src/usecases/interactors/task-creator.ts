@@ -2,8 +2,8 @@ import {
   CreateTaskInteractor,
   CreateTaskRequest,
   CreateTaskResponse
-} from "../usecases/create-task";
-import TaskRepository from "../repositories/task-repository";
+} from "@/usecases/create-task";
+import TaskRepository from "@/entities/repositories/task-repository";
 
 export default class TaskCreater implements CreateTaskInteractor {
   public constructor(private repository: TaskRepository) {}
