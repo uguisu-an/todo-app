@@ -1,5 +1,5 @@
 <template>
-  <li class="task-list-item">
+  <li is="b-list-group-item" class="task-list-item">
     {{ title }}
   </li>
 </template>

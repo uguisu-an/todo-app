@@ -1,5 +1,5 @@
 <template>
-  <ul class="task-list">
+  <ul is="b-list-group" class="task-list">
     <slot></slot>
   </ul>
 </template>
