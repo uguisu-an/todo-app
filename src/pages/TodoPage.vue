@@ -1,5 +1,5 @@
 <template>
-  <todo v-bind="{ newTask, taskList }" v-on="{ create }"></todo>
+  <todo v-bind="{ newTask, taskList }" v-on="{ createTask }"></todo>
 </template>
 
 <script lang="ts">
@@ -32,21 +32,21 @@ export default class TodoPage extends Vue {
     return TaskListPresenter(this.tasks);
   }
 
+  async createTask(task: NewTask) {
+    const res = await new TaskCreater(taskRepository).handle(task);
+    this.tasks.push(res);
+    this.newTask = new NewTask();
+  }
+
   protected created() {
     this.initTaskList();
   }
 
   private tasks: Task[] = [];
 
-  async initTaskList() {
+  private async initTaskList() {
     const res = await new TaskSearcher(taskRepository).handle({});
     this.tasks = res.tasks;
-  }
-
-  async create(task: NewTask) {
-    const res = await new TaskCreater(taskRepository).handle(task);
-    this.tasks.push(res);
-    this.newTask = new NewTask();
   }
 }
 </script>

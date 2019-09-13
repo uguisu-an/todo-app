@@ -16,7 +16,7 @@ export default class VNewTask extends Vue {
   @Prop({ default: () => new NewTask() }) task!: NewTask;
 
   submit() {
-    this.$emit("create", this.task);
+    this.$emit("submit", this.task);
   }
 }
 </script>

@@ -9,7 +9,7 @@
     </v-task-list>
     <v-new-task-form
       v-bind="{ task: newTask }"
-      v-on="{ create }"
+      v-on="{ submit }"
     ></v-new-task-form>
   </div>
 </template>
@@ -33,8 +33,8 @@ export default class Todo extends Vue {
   @Prop({ default: () => new NewTask() }) newTask!: NewTask;
   @Prop({ default: () => [] }) taskList!: TaskListItem[];
 
-  async create(newTask: NewTask) {
-    this.$emit("create", newTask);
+  async submit(newTask: NewTask) {
+    this.$emit("createTask", newTask);
   }
 }
 </script>
