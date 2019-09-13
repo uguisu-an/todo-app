@@ -5,7 +5,7 @@
         {{ t.title }}
       </li>
     </ol>
-    <create-task-form :req="req" @create="create"></create-task-form>
+    <v-new-task-form :req="req" @create="create"></v-new-task-form>
   </div>
 </template>
 
@@ -17,7 +17,7 @@ import TaskCreater from "@/usecases/interactors/task-creator";
 import TaskSearcher from "@/usecases/interactors/task-searcher";
 import TaskRepository from "@/entities/repositories/task-repository";
 import TaskApi from "@/api/task-api";
-import CreateTaskForm from "@/components/CreateTaskForm.vue";
+import VNewTaskForm from "@/components/VNewTaskForm.vue";
 
 const client = Axios.create({ baseURL: "http://localhost:3000" });
 const taskApi = new TaskApi(client);
@@ -30,7 +30,7 @@ interface Task {
 
 @Component({
   components: {
-    CreateTaskForm
+    VNewTaskForm
   }
 })
 export default class Todo extends Vue {
