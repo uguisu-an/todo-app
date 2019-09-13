@@ -1,7 +1,7 @@
 import ListTaskInteractor from "@/usecases/list-task";
-import TaskRepository from "@/entities/repositories/task-repository";
 import Task from "../models/task";
 import TaskEntity from "@/entities/task";
+import TaskRepository from "../gateways/task-repository";
 
 export default class TaskSearcher implements ListTaskInteractor {
   public constructor(private repository: TaskRepository) {}
