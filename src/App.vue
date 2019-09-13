@@ -1,6 +1,6 @@
 <template>
   <b-container id="app" class="my-3">
-    <router-view />
+    <router-view></router-view>
   </b-container>
 </template>
 

@@ -3,8 +3,8 @@
     <b-input-group>
       <b-input type="text" v-model="task.title" required></b-input>
       <b-input-group-append>
-        <b-button type="submit">
-          + Add Task
+        <b-button type="submit" variant="primary">
+          Add Task
         </b-button>
       </b-input-group-append>
     </b-input-group>

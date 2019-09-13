@@ -1,18 +1,23 @@
 <template>
-  <div>
-    <v-task-list>
-      <v-task-list-item
-        v-for="t in taskList"
-        v-bind="t"
-        :key="t.key"
-      ></v-task-list-item>
-    </v-task-list>
-    <v-new-task-form
-      v-bind="{ task: newTask }"
-      v-on="{ submit }"
-      class="mt-3"
-    ></v-new-task-form>
-  </div>
+  <b-row>
+    <b-col sm="3">
+      test
+    </b-col>
+    <b-col>
+      <v-task-list>
+        <v-task-list-item
+          v-for="t in taskList"
+          v-bind="t"
+          :key="t.key"
+        ></v-task-list-item>
+      </v-task-list>
+      <v-new-task-form
+        v-bind="{ task: newTask }"
+        v-on="{ submit }"
+        class="mt-3"
+      ></v-new-task-form>
+    </b-col>
+  </b-row>
 </template>
 
 <script lang="ts">
