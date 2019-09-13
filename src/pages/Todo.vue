@@ -1,10 +1,12 @@
 <template>
   <div>
-    <ol>
-      <li v-for="t in tasks" :key="t.id">
-        {{ t.title }}
-      </li>
-    </ol>
+    <v-task-list>
+      <v-task-list-item
+        v-for="t in tasks"
+        v-bind="t"
+        :key="t.key"
+      ></v-task-list-item>
+    </v-task-list>
     <v-new-task-form v-bind="{ task }" @create="create"></v-new-task-form>
   </div>
 </template>
@@ -19,6 +21,10 @@ import TaskRepository from "@/entities/repositories/task-repository";
 import TaskApi from "@/api/task-api";
 import VNewTaskForm from "@/components/VNewTaskForm.vue";
 import NewTask from "@/models/new-task";
+import VTaskList from "../components/VTaskList.vue";
+import VTaskListItem from "../components/VTaskListItem.vue";
+import TaskListItem from "@/models/task-list-item";
+import TaskListPresenter from "@/presenters/task-list-presenter";
 
 const client = Axios.create({ baseURL: "http://localhost:3000" });
 const taskApi = new TaskApi(client);
@@ -31,12 +37,18 @@ interface Task {
 
 @Component({
   components: {
+    VTaskList,
+    VTaskListItem,
     VNewTaskForm
   }
 })
 export default class Todo extends Vue {
   task: NewTask = new NewTask();
   tasks: Task[] = [];
+
+  get taskList(): TaskListItem[] {
+    return TaskListPresenter(this.tasks);
+  }
 
   created() {
     this.initTaskList();
