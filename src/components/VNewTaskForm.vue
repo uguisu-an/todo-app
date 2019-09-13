@@ -1,10 +1,14 @@
 <template>
-  <form @submit.prevent="submit">
-    <input type="text" v-model="task.title" required />
-    <button>
-      + Add Task
-    </button>
-  </form>
+  <b-form @submit.prevent="submit">
+    <b-input-group>
+      <b-input type="text" v-model="task.title" required></b-input>
+      <b-input-group-append>
+        <b-button type="submit">
+          + Add Task
+        </b-button>
+      </b-input-group-append>
+    </b-input-group>
+  </b-form>
 </template>
 
 <script lang="ts">

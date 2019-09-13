@@ -10,6 +10,7 @@
     <v-new-task-form
       v-bind="{ task: newTask }"
       v-on="{ submit }"
+      class="mt-3"
     ></v-new-task-form>
   </div>
 </template>

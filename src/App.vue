@@ -1,7 +1,7 @@
 <template>
-  <div id="app">
+  <b-container id="app" class="my-3">
     <router-view />
-  </div>
+  </b-container>
 </template>
 
 <script>
