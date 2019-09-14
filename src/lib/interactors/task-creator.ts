@@ -1,5 +1,5 @@
 import TaskRepository from "../gateways/task-repository";
-import CreateTaskInteractor from "../create-task";
+import CreateTaskInteractor from "../usecases/create-task";
 import CreateTaskRequest from "../models/create-task-request";
 import Task from "../models/task";
 

@@ -8,19 +8,19 @@
 <script lang="ts">
 import { Prop, Component, Vue } from "vue-property-decorator";
 import Axios from "axios";
-import TaskCreater from "@/usecases/interactors/task-creator";
-import TaskSearcher from "@/usecases/interactors/task-searcher";
+import TaskCreater from "@/lib/interactors/task-creator";
+import TaskSearcher from "@/lib/interactors/task-searcher";
 import TaskApi from "@/api/task-api";
 import NewTask from "@/models/new-task";
 import TaskListItem from "@/models/task-list-item";
 import ProjectListItem from "@/models/project-list-item";
 import TaskListPresenter from "@/presenters/task-list-presenter";
-import Task from "@/usecases/models/task";
+import Task from "@/lib/models/task";
 
-import Todo from "@/views/Todo.vue";
-import CreateTaskInteractor from "../usecases/create-task";
-import ListTaskInteractor from "../usecases/list-task";
-import TaskRepository from "../usecases/gateways/task-repository";
+import Todo from "@/templates/Todo.vue";
+import CreateTaskInteractor from "@/lib/usecases/create-task";
+import ListTaskInteractor from "@/lib/usecases/list-task";
+import TaskRepository from "@/lib/gateways/task-repository";
 
 const client = Axios.create({ baseURL: "http://localhost:3000" });
 const taskRepository: TaskRepository = new TaskApi(client);

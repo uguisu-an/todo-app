@@ -1,7 +1,7 @@
 import CreateProjectRequest from "../models/create-project-request";
 import Project from "../models/project";
 import ProjectRepository from "../gateways/project-repository";
-import CreateProjectUseCase from "../create-project";
+import CreateProjectUseCase from "../usecases/create-project";
 
 export default class CreateProjectInteractor implements CreateProjectUseCase {
   public constructor(private projects: ProjectRepository) {}

@@ -1,6 +1,6 @@
-import ListTaskInteractor from "@/usecases/list-task";
+import ListTaskInteractor from "@/lib/usecases/list-task";
 import Task from "../models/task";
-import TaskEntity from "@/entities/task";
+import TaskEntity from "@/lib/entities/task";
 import TaskRepository from "../gateways/task-repository";
 
 export default class TaskSearcher implements ListTaskInteractor {

@@ -1,4 +1,4 @@
-import Task from "@/usecases/models/task";
+import Task from "@/lib/models/task";
 import TaskListItem from "@/models/task-list-item";
 
 export default function TaskListPresenter(tasks: Task[]): TaskListItem[] {

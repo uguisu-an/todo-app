@@ -1,4 +1,4 @@
-import Task from "@/entities/task";
+import Task from "@/lib/entities/task";
 
 /**
  * TaskのAPIとやり取りする

@@ -1,4 +1,4 @@
-import Project from "@/entities/project";
+import Project from "@/lib/entities/project";
 
 export default interface ProjectRepository {
   create(project: Project): Promise<Project>;
