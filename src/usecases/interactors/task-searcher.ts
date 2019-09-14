@@ -4,10 +4,10 @@ import TaskEntity from "@/entities/task";
 import TaskRepository from "../gateways/task-repository";
 
 export default class TaskSearcher implements ListTaskInteractor {
-  public constructor(private repository: TaskRepository) {}
+  public constructor(private tasks: TaskRepository) {}
 
   public async handle(): Promise<Task[]> {
-    const tasks = await this.repository.getAll();
+    const tasks = await this.tasks.getAll();
     return tasks.map(toTask);
   }
 }
