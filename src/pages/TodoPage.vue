@@ -21,6 +21,7 @@ import Todo from "@/templates/Todo.vue";
 import CreateTaskInteractor from "@/lib/usecases/create-task";
 import ListTaskInteractor from "@/lib/usecases/list-task";
 import TaskRepository from "@/lib/gateways/task-repository";
+import TaskListItemDecorator from "@/decorators/task-list-item-decorator";
 
 const client = Axios.create({ baseURL: "http://localhost:3000" });
 const taskRepository: TaskRepository = new TaskApi(client);
@@ -34,7 +35,7 @@ export default class TodoPage extends Vue {
   newTask: NewTask = new NewTask();
 
   get taskList(): TaskListItem[] {
-    return TaskListPresenter(this.tasks);
+    return this.tasks.map(TaskListItemDecorator);
   }
 
   get projectList(): ProjectListItem[] {
