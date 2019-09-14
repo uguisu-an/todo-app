@@ -1,6 +1,12 @@
-import CreateProjectRequest from "../models/create-project-request";
-import Project from "../models/project";
+export default interface CreateProjectInteractor {
+  create(project: CreateProjectRequest): Promise<CreateProjectResponse>;
+}
 
-export default interface CreateProjectUseCase {
-  create(project: CreateProjectRequest): Promise<Project>;
+export interface CreateProjectRequest {
+  name: string;
+}
+
+export interface CreateProjectResponse {
+  id: number;
+  name: string;
 }

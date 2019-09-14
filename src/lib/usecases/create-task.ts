@@ -1,6 +1,12 @@
-import Task from "../models/task";
-import CreateTaskRequest from "../models/create-task-request";
-
 export default interface CreateTaskInteractor {
-  handle(req: CreateTaskRequest): Promise<Task>;
+  handle(req: CreateTaskRequest): Promise<CreateTaskResponse>;
+}
+
+export interface CreateTaskRequest {
+  title: string;
+}
+
+export interface CreateTaskResponse {
+  id: number;
+  title: string;
 }
