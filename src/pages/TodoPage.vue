@@ -14,7 +14,6 @@ import TaskApi from "@/api/task-api";
 import NewTask from "@/models/new-task";
 import TaskListItem from "@/models/task-list-item";
 import ProjectListItem from "@/models/project-list-item";
-import TaskListPresenter from "@/presenters/task-list-presenter";
 import Task from "@/lib/models/task";
 
 import Todo from "@/templates/Todo.vue";

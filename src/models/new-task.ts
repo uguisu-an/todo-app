@@ -1,4 +1,4 @@
-import CreateTaskRequest from "@/lib/models/create-task-request";
+import { CreateTaskRequest } from "@/lib/usecases/create-task";
 
 export default class NewTask implements CreateTaskRequest {
   title: string = "";

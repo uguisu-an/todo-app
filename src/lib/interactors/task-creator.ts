@@ -1,6 +1,7 @@
 import TaskRepository from "../gateways/task-repository";
-import CreateTaskInteractor from "../usecases/create-task";
-import CreateTaskRequest from "../models/create-task-request";
+import CreateTaskInteractor, {
+  CreateTaskRequest
+} from "../usecases/create-task";
 import Task from "../models/task";
 
 export default class TaskCreater implements CreateTaskInteractor {
